@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.0
+
+- Added the Angular environments schematic to the Explorer menu and Command Palette.
+
 ## 1.0.2
 
 - Added an icon to the VS Code extension listing.

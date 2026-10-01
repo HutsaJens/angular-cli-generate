@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { isSafeArg, parseCreatedFiles, pickMainFile, summarizeError, validateName } from "../schematics";
+import { isSafeArg, parseCreatedFiles, pickMainFile, SCHEMATICS, summarizeError, validateName } from "../schematics";
+
+describe("SCHEMATICS", () => {
+  it("includes environments generation", () => {
+    expect(SCHEMATICS).toContain("environments");
+  });
+});
 
 describe("validateName", () => {
   it.each(["user-list", "shared/user-list", "@scope/thing", "a_b.c"])("accepts %s", (name) => {

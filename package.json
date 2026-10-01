@@ -2,7 +2,7 @@
   "name": "angular-cli-generate",
   "displayName": "%displayName%",
   "description": "%description%",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "icon": "logo.png",
   "publisher": "huts-a-jens",
   "author": "HutsAJens",
@@ -105,6 +105,12 @@
         "category": "%category.angularCli%"
       },
       {
+        "command": "angularCliGenerate.environments",
+        "title": "%command.environments.title%",
+        "shortTitle": "%command.environments.short%",
+        "category": "%category.angularCli%"
+      },
+      {
         "command": "angularCliGenerate.application",
         "title": "%command.application.title%",
         "shortTitle": "%command.application.short%",
@@ -195,6 +201,10 @@
         {
           "command": "angularCliGenerate.enum",
           "group": "1_common@10"
+        },
+        {
+          "command": "angularCliGenerate.environments",
+          "group": "1_common@11"
         },
         {
           "command": "angularCliGenerate.application",

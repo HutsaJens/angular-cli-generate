@@ -33,6 +33,8 @@
   "command.class.short": "Class",
   "command.enum.title": "Generate Enum",
   "command.enum.short": "Enum",
+  "command.environments.title": "Generate Environments",
+  "command.environments.short": "Environments",
   "command.application.title": "Generate Application",
   "command.application.short": "Application",
   "command.library.title": "Generate Library",

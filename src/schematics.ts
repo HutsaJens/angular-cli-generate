@@ -5,6 +5,7 @@ export const SCHEMATICS = [
   "component",
   "directive",
   "enum",
+  "environments",
   "guard",
   "interceptor",
   "interface",

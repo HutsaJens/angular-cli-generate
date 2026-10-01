@@ -7,7 +7,8 @@ Right-click a folder in the Explorer and run any `ng generate` schematic, using 
 - **Explorer:** right-click a folder → **Angular Generate** → pick a schematic → enter a name.
   The name defaults to the folder name; `shared/user-list` style paths work.
 - **Command Palette:** `Angular CLI: Generate Component` etc. The target folder is the folder of the
-  active file, or the workspace folder if no file is open.
+  active file, or the workspace folder if no file is open. This includes Angular's
+  `environments` schematic for creating environment configuration files.
 - **Switch package manager:** click the status bar item (shown in Angular workspaces), use
   `Angular CLI: Switch Package Manager...`, or right-click → Angular Generate → Package Manager...
 
