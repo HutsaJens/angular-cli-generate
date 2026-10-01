@@ -1,0 +1,291 @@
+{
+  "name": "angular-cli-generate",
+  "displayName": "%displayName%",
+  "description": "%description%",
+  "version": "1.0.0",
+  "publisher": "huts-a-jens",
+  "author": "HutsAJens",
+  "license": "GPL-3.0-only",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HutsaJens/angular-cli-generate.git"
+  },
+  "keywords": [
+    "angular",
+    "ng generate",
+    "schematics",
+    "angular cli",
+    "pnpm",
+    "npm"
+  ],
+  "categories": [
+    "Other"
+  ],
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "extensionKind": [
+    "workspace"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "workspaceContains:angular.json"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": false,
+      "description": "This extension runs the Angular CLI, which executes code from the workspace."
+    },
+    "virtualWorkspaces": {
+      "supported": false,
+      "description": "This extension needs a local file system to run the Angular CLI."
+    }
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "angularCliGenerate.component",
+        "title": "%command.component.title%",
+        "shortTitle": "%command.component.short%",
+        "category": "%category.angularCli%"
+      },
+      {
+        "command": "angularCliGenerate.service",
+        "title": "%command.service.title%",
+        "shortTitle": "%command.service.short%",
+        "category": "%category.angularCli%"
+      },
+      {
+        "command": "angularCliGenerate.directive",
+        "title": "%command.directive.title%",
+        "shortTitle": "%command.directive.short%",
+        "category": "%category.angularCli%"
+      },
+      {
+        "command": "angularCliGenerate.pipe",
+        "title": "%command.pipe.title%",
+        "shortTitle": "%command.pipe.short%",
+        "category": "%category.angularCli%"
+      },
+      {
+        "command": "angularCliGenerate.module",
+        "title": "%command.module.title%",
+        "shortTitle": "%command.module.short%",
+        "category": "%category.angularCli%"
+      },
+      {
+        "command": "angularCliGenerate.guard",
+        "title": "%command.guard.title%",
+        "shortTitle": "%command.guard.short%",
+        "category": "%category.angularCli%"
+      },
+      {
+        "command": "angularCliGenerate.interceptor",
+        "title": "%command.interceptor.title%",
+        "shortTitle": "%command.interceptor.short%",
+        "category": "%category.angularCli%"
+      },
+      {
+        "command": "angularCliGenerate.interface",
+        "title": "%command.interface.title%",
+        "shortTitle": "%command.interface.short%",
+        "category": "%category.angularCli%"
+      },
+      {
+        "command": "angularCliGenerate.class",
+        "title": "%command.class.title%",
+        "shortTitle": "%command.class.short%",
+        "category": "%category.angularCli%"
+      },
+      {
+        "command": "angularCliGenerate.enum",
+        "title": "%command.enum.title%",
+        "shortTitle": "%command.enum.short%",
+        "category": "%category.angularCli%"
+      },
+      {
+        "command": "angularCliGenerate.application",
+        "title": "%command.application.title%",
+        "shortTitle": "%command.application.short%",
+        "category": "%category.angularCli%"
+      },
+      {
+        "command": "angularCliGenerate.library",
+        "title": "%command.library.title%",
+        "shortTitle": "%command.library.short%",
+        "category": "%category.angularCli%"
+      },
+      {
+        "command": "angularCliGenerate.appShell",
+        "title": "%command.appShell.title%",
+        "shortTitle": "%command.appShell.short%",
+        "category": "%category.angularCli%"
+      },
+      {
+        "command": "angularCliGenerate.serviceWorker",
+        "title": "%command.serviceWorker.title%",
+        "shortTitle": "%command.serviceWorker.short%",
+        "category": "%category.angularCli%"
+      },
+      {
+        "command": "angularCliGenerate.webWorker",
+        "title": "%command.webWorker.title%",
+        "shortTitle": "%command.webWorker.short%",
+        "category": "%category.angularCli%"
+      },
+      {
+        "command": "angularCliGenerate.switchPackageManager",
+        "title": "%command.switchPackageManager.title%",
+        "shortTitle": "%command.switchPackageManager.short%",
+        "category": "%category.angularCli%"
+      }
+    ],
+    "submenus": [
+      {
+        "id": "angularCliGenerate.generateMenu",
+        "label": "%submenu.generate%"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "submenu": "angularCliGenerate.generateMenu",
+          "when": "explorerResourceIsFolder",
+          "group": "2_workspace@90"
+        }
+      ],
+      "angularCliGenerate.generateMenu": [
+        {
+          "command": "angularCliGenerate.component",
+          "group": "1_common@1"
+        },
+        {
+          "command": "angularCliGenerate.service",
+          "group": "1_common@2"
+        },
+        {
+          "command": "angularCliGenerate.directive",
+          "group": "1_common@3"
+        },
+        {
+          "command": "angularCliGenerate.pipe",
+          "group": "1_common@4"
+        },
+        {
+          "command": "angularCliGenerate.module",
+          "group": "1_common@5"
+        },
+        {
+          "command": "angularCliGenerate.guard",
+          "group": "1_common@6"
+        },
+        {
+          "command": "angularCliGenerate.interceptor",
+          "group": "1_common@7"
+        },
+        {
+          "command": "angularCliGenerate.interface",
+          "group": "1_common@8"
+        },
+        {
+          "command": "angularCliGenerate.class",
+          "group": "1_common@9"
+        },
+        {
+          "command": "angularCliGenerate.enum",
+          "group": "1_common@10"
+        },
+        {
+          "command": "angularCliGenerate.application",
+          "group": "2_more@1"
+        },
+        {
+          "command": "angularCliGenerate.library",
+          "group": "2_more@2"
+        },
+        {
+          "command": "angularCliGenerate.appShell",
+          "group": "2_more@3"
+        },
+        {
+          "command": "angularCliGenerate.serviceWorker",
+          "group": "2_more@4"
+        },
+        {
+          "command": "angularCliGenerate.webWorker",
+          "group": "2_more@5"
+        },
+        {
+          "command": "angularCliGenerate.switchPackageManager",
+          "group": "3_settings@1"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "%config.title%",
+      "properties": {
+        "angularCliGenerate.packageManager": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "npm",
+            "pnpm"
+          ],
+          "enumDescriptions": [
+            "%config.packageManager.auto%",
+            "%config.packageManager.npm%",
+            "%config.packageManager.pnpm%"
+          ],
+          "default": "auto",
+          "scope": "resource",
+          "markdownDescription": "%config.packageManager.description%"
+        },
+        "angularCliGenerate.options": {
+          "type": "object",
+          "default": {},
+          "scope": "resource",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[\\w\\-./@:,=]+$"
+            }
+          },
+          "markdownDescription": "%config.options.description%"
+        },
+        "angularCliGenerate.openGeneratedFile": {
+          "type": "boolean",
+          "default": true,
+          "scope": "resource",
+          "markdownDescription": "%config.openGeneratedFile.description%"
+        },
+        "angularCliGenerate.showStatusBarItem": {
+          "type": "boolean",
+          "default": true,
+          "scope": "window",
+          "markdownDescription": "%config.showStatusBarItem.description%"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc --noEmit && node esbuild.mjs",
+    "typecheck": "tsc --noEmit",
+    "watch": "node esbuild.mjs --watch",
+    "lint": "eslint src",
+    "test": "vitest run",
+    "vscode:prepublish": "node esbuild.mjs --production",
+    "package": "vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.4",
+    "@types/vscode": "1.100.0",
+    "@vscode/vsce": "^4.0.0",
+    "esbuild": "^0.28.2",
+    "eslint": "^10.11.0",
+    "ovsx": "^1.2.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.0",
+    "vitest": "^5.0.3"
+  }
+}
