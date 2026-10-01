@@ -41,3 +41,9 @@ npm run watch      # then press F5 ("Run Extension")
 npm run typecheck && npm run lint && npm test
 npm run package    # builds a .vsix (vsce package --no-dependencies)
 ```
+
+## Releases
+
+Pull requests to `main` run the checks above. When a push to `main` changes `package.json`'s
+version, the workflow packages the extension and uploads `extension.vsix` as a downloadable
+artifact on the GitHub Actions run. It does not publish to either marketplace.

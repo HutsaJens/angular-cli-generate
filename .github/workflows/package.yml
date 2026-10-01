@@ -1,0 +1,61 @@
+name: CI and VSIX Package
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    outputs:
+      version_changed: ${{ steps.version.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm test
+      - name: Detect extension version change
+        id: version
+        if: github.event_name == 'push'
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          node -e '
+            const { execFileSync } = require("node:child_process");
+            const { appendFileSync, readFileSync } = require("node:fs");
+            const before = process.env.BEFORE;
+            const previous = /^0+$/.test(before)
+              ? undefined
+              : JSON.parse(execFileSync("git", ["show", `${before}:package.json`], { encoding: "utf8" })).version;
+            const current = JSON.parse(readFileSync("package.json", "utf8")).version;
+            appendFileSync(process.env.GITHUB_OUTPUT, `changed=${previous !== current}\n`);
+          '
+
+  package:
+    needs: verify
+    if: github.event_name == 'push' && needs.verify.outputs.version_changed == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run package -- --out extension.vsix
+      - uses: actions/upload-artifact@v4
+        with:
+          name: angular-cli-generate-vsix
+          path: extension.vsix

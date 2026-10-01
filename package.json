@@ -2,7 +2,7 @@
   "name": "angular-cli-generate",
   "displayName": "%displayName%",
   "description": "%description%",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "huts-a-jens",
   "author": "HutsAJens",
   "license": "GPL-3.0-only",
@@ -283,7 +283,6 @@
     "@vscode/vsce": "^4.0.0",
     "esbuild": "^0.28.2",
     "eslint": "^10.11.0",
-    "ovsx": "^1.2.0",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.71.0",
     "vitest": "^5.0.3"
