@@ -1,4 +1,4 @@
-name: CI and VSIX Package
+name: CI and Release
 
 on:
   push:
@@ -43,10 +43,12 @@ jobs:
             appendFileSync(process.env.GITHUB_OUTPUT, `changed=${previous !== current}\n`);
           '
 
-  package:
+  release:
     needs: verify
     if: github.event_name == 'push' && needs.verify.outputs.version_changed == 'true'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -55,7 +57,22 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run package -- --out extension.vsix
-      - uses: actions/upload-artifact@v4
-        with:
-          name: angular-cli-generate-vsix
-          path: extension.vsix
+      - name: Extract release notes
+        id: notes
+        run: |
+          node <<'NODE'
+          const { appendFileSync, readFileSync, writeFileSync } = require("node:fs");
+          const version = JSON.parse(readFileSync("package.json", "utf8")).version;
+          const sections = readFileSync("CHANGELOG.md", "utf8").split(/^##\s+/m);
+          const section = sections.find((entry) => entry.split(/\r?\n/, 1)[0].trim() === version);
+          if (!section) throw new Error(`CHANGELOG.md has no section for version ${version}`);
+          const notes = section.split(/\r?\n/).slice(1).join("\n").trim();
+          if (!notes) throw new Error(`CHANGELOG.md section for ${version} is empty`);
+          writeFileSync("release-notes.md", `${notes}\n`);
+          appendFileSync(process.env.GITHUB_OUTPUT, `tag=v${version}\n`);
+          NODE
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.notes.outputs.tag }}
+        run: gh release create "$TAG" extension.vsix --title "$TAG" --notes-file release-notes.md

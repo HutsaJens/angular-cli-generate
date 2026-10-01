@@ -45,5 +45,6 @@ npm run package    # builds a .vsix (vsce package --no-dependencies)
 ## Releases
 
 Pull requests to `main` run the checks above. When a push to `main` changes `package.json`'s
-version, the workflow packages the extension and uploads `extension.vsix` as a downloadable
-artifact on the GitHub Actions run. It does not publish to either marketplace.
+version, the workflow requires a matching `## <version>` section in `CHANGELOG.md`, packages the
+extension, and creates a GitHub Release tagged `v<version>` with the changelog notes and VSIX
+attached. It does not publish to either marketplace.
